@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: college-bus-tracker
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bus_tracker.py
+    plan: free
+    autoDeploy: true
