@@ -136,7 +136,7 @@ GPS_SENDER = '''
             </div>
             <div class="info-item">
                 <span>Last Update:</span>
-                <span id="time">-</span>ngrok
+                <span id="time">-</span>
             </div>
         </div>
     </div>
