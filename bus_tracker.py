@@ -136,7 +136,7 @@ GPS_SENDER = '''
             </div>
             <div class="info-item">
                 <span>Last Update:</span>
-                <span id="time">-</span>
+                <span id="time">-</span>ngrok
             </div>
         </div>
     </div>
@@ -413,19 +413,15 @@ def stop_tracking():
 def get_bus_location():
     return jsonify(bus_data)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    import os
+
+    port = int(os.environ.get("PORT", 5000))  # Render provides PORT dynamically
+
     print("\n" + "="*60)
-    print("🚌 COLLEGE BUS TRACKER - STARTING...")
+    print("🚌 COLLEGE BUS TRACKER - STARTING ON PORT", port)
     print("="*60)
-    print("\n📱 FOR PERSON IN BUS (GPS Sender):")
-    print("   Open: http://127.0.0.1:5000/sender")
-    print("   Or:   http://localhost:5000/sender")
-    print("\n📍 FOR EVERYONE ELSE (Tracker):")
-    print("   Open: http://127.0.0.1:5000/")
-    print("   Or:   http://localhost:5000/")
-    print("\n" + "="*60)
-    print("✅ Server is running on port 5000")
-    print("❌ Press CTRL+C to stop")
+    print("✅ Flask app is running... accessible via Render link")
     print("="*60 + "\n")
-    
-    app.run(host='0.0.0.0', port=5000, debug=True)
+
+    app.run(host="0.0.0.0", port=port)
