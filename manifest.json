@@ -2,7 +2,7 @@
   "name": "College Bus Tracker",
   "short_name": "BusTracker",
   "description": "Track your college buses live and view GPS updates in real time.",
-  "start_url": "/role",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "fullscreen"],
