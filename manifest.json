@@ -1,9 +1,11 @@
 {
+  "id": "/",
   "name": "College Bus Tracker",
   "short_name": "BusTracker",
   "start_url": "/role",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
   "background_color": "#ffffff",
   "theme_color": "#667eea",
   "orientation": "portrait",
