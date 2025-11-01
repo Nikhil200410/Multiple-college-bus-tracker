@@ -1,19 +1,42 @@
-self.addEventListener("install", () => {
-  console.log("Service Worker installed");
+const CACHE_NAME = "bus-tracker-cache-v2";
+const urlsToCache = [
+  "/",
+  "/role",
+  "/sender",
+  "/manifest.json",
+  "/static/icon-192.png",
+  "/static/icon-512.png"
+];
+
+// Install event
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+  );
+  self.skipWaiting();
 });
 
+// Activate event
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// Fetch event
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.open("bus-tracker-cache").then(cache => {
-      return cache.match(event.request).then(response => {
-        return (
-          response ||
-          fetch(event.request).then(networkResponse => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          })
-        );
-      });
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
     })
   );
 });
