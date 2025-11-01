@@ -1,7 +1,7 @@
 {
-  "id": "/",
   "name": "College Bus Tracker",
   "short_name": "BusTracker",
+  "description": "Track your college buses live and view GPS updates in real time.",
   "start_url": "/role",
   "scope": "/",
   "display": "standalone",
