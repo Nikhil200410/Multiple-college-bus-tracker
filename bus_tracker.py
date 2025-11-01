@@ -970,7 +970,7 @@ def get_all_buses():
 def get_bus_location(bus_id):
     return jsonify(buses_data.get(bus_id, {}))
     
-@app.route('/manifest.json')
+@app.route('/static/manifest.json')
 def manifest():
     return send_from_directory('static', 'manifest.json')
 
