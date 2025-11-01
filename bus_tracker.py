@@ -426,7 +426,8 @@ def role_selector():
         <link rel="manifest" href="/manifest.json">
         <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js');
+           navigator.serviceWorker.register('/static/service-worker.js');
+
         }
         </script>
         <style>
