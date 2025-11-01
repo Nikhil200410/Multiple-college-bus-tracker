@@ -3,7 +3,6 @@ const urlsToCache = [
   "/",
   "/role",
   "/sender",
-  "/tracker",
   "/manifest.json",
   "/static/icon-192.png",
   "/static/icon-512.png"
@@ -23,9 +22,7 @@ self.addEventListener("activate", event => {
     caches.keys().then(keys =>
       Promise.all(
         keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
+          if (key !== CACHE_NAME) return caches.delete(key);
         })
       )
     )
@@ -36,15 +33,13 @@ self.addEventListener("activate", event => {
 // Fetch event
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return (
-        response ||
-        fetch(event.request).catch(() =>
-          new Response("⚠️ Offline – please reconnect.", {
-            headers: { "Content-Type": "text/plain" }
-          })
-        )
-      );
-    })
+    caches.match(event.request).then(response =>
+      response ||
+      fetch(event.request).catch(() =>
+        new Response("⚠️ You are offline. Please reconnect.", {
+          headers: { "Content-Type": "text/plain" }
+        })
+      )
+    )
   );
 });
