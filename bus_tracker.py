@@ -127,14 +127,11 @@ GPS_SENDER = '''
 <meta name="theme-color" content="#667eea">
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/static/service-worker.js')
-        .then(() => console.log('✅ Service Worker registered'))
-        .catch(err => console.log('❌ SW registration failed:', err));
-    });
+    navigator.serviceWorker.register('/static/service-worker.js')
+      .then(reg => console.log('✅ Service Worker registered:', reg))
+      .catch(err => console.error('❌ Service Worker registration failed:', err));
   }
 </script>
-
     <title>GPS Sender - Multi Bus Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -395,12 +392,11 @@ TRACKER_DASHBOARD = '''
 <link rel="manifest" href="/static/manifest.json">
 <meta name="theme-color" content="#667eea">
 <script>
+  <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/static/service-worker.js')
-        .then(() => console.log('✅ Service Worker registered'))
-        .catch(err => console.log('❌ SW registration failed:', err));
-    });
+    navigator.serviceWorker.register('/static/service-worker.js')
+      .then(reg => console.log('✅ Service Worker registered:', reg))
+      .catch(err => console.error('❌ Service Worker registration failed:', err));
   }
 </script>
 
