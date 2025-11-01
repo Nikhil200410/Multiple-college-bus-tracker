@@ -1,5 +1,7 @@
 from flask import Flask, render_template_string, jsonify, request
 from datetime import datetime
+from flask import send_from_directory
+
 
 app = Flask(__name__)
 
@@ -19,6 +21,21 @@ GPS_SENDER = '''
 <!DOCTYPE html>
 <html>
 <head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#667eea">
+  <link rel="manifest" href="/manifest.json">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/service-worker.js')
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch(err => console.error("Service Worker registration failed:", err));
+    }
+  </script>
+
+  <title>College Bus Tracker</title>
+
     <title>GPS Sender - College Bus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -208,6 +225,21 @@ TRACKER_DASHBOARD = '''
 <!DOCTYPE html>
 <html>
 <head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#667eea">
+  <link rel="manifest" href="/manifest.json">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/service-worker.js')
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch(err => console.error("Service Worker registration failed:", err));
+    }
+  </script>
+
+  <title>College Bus Tracker</title>
+
     <title>College Bus Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -460,6 +492,11 @@ def stop_tracking():
 @app.route('/api/bus_location')
 def get_bus_location():
     return jsonify(bus_data)
+
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('.', 'manifest.json')
+
 
 if __name__ == "__main__":
     import os
