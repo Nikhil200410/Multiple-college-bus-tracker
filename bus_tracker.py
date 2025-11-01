@@ -968,6 +968,14 @@ def get_all_buses():
 @app.route('/api/bus_location/<bus_id>')
 def get_bus_location(bus_id):
     return jsonify(buses_data.get(bus_id, {}))
+    @app.route('/manifest.json')
+def manifest():
+    return send_from_directory('static', 'manifest.json')
+
+@app.route('/static/service-worker.js')
+def sw():
+    return send_from_directory('static', 'service-worker.js')
+
 
 if __name__ == '__main__':
     import sys
