@@ -123,7 +123,7 @@ GPS_SENDER = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/static/manifest.json">
 <meta name="theme-color" content="#667eea">
 <script>
   if ('serviceWorker' in navigator) {
@@ -392,7 +392,7 @@ TRACKER_DASHBOARD = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/static/manifest.json">
 <meta name="theme-color" content="#667eea">
 <script>
   if ('serviceWorker' in navigator) {
