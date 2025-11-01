@@ -123,7 +123,7 @@ GPS_SENDER = '''
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="/static/manifest.json">
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#667eea">
 <script>
   if ('serviceWorker' in navigator) {
@@ -389,7 +389,7 @@ TRACKER_DASHBOARD = '''
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="/static/manifest.json">
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#667eea">
 <script>
   <script>
@@ -966,7 +966,7 @@ def get_all_buses():
 def get_bus_location(bus_id):
     return jsonify(buses_data.get(bus_id, {}))
     
-@app.route('/static/manifest.json')
+@app.route('/manifest.json')
 def manifest():
     return send_from_directory('static', 'manifest.json')
 
