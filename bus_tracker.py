@@ -29,11 +29,12 @@ def role_select():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Role Selection - Multi Bus Tracker</title>
+        <title>Choose Role | Multi-Bus Tracker</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
             body {
-                font-family: Arial, sans-serif;
+                font-family: 'Poppins', sans-serif;
                 background: linear-gradient(135deg, #667eea, #764ba2);
                 color: white;
                 display: flex;
@@ -41,40 +42,81 @@ def role_select():
                 align-items: center;
                 justify-content: center;
                 height: 100vh;
-                margin: 0;
                 text-align: center;
             }
             h1 {
                 font-size: 2em;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
+            }
+            p {
+                font-size: 1em;
+                margin-bottom: 25px;
+                opacity: 0.9;
+            }
+            .role-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 90%;
+                max-width: 400px;
             }
             .role-btn {
                 background: white;
                 color: #667eea;
                 border: none;
-                padding: 15px 25px;
-                border-radius: 12px;
-                font-size: 1.2em;
+                padding: 15px;
+                border-radius: 15px;
+                font-size: 1.1em;
                 font-weight: bold;
                 cursor: pointer;
-                margin: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                transition: all 0.3s;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+                transition: all 0.3s ease;
             }
             .role-btn:hover {
-                transform: translateY(-3px);
-                background: #f0f0ff;
+                background: #f1f1ff;
+                transform: scale(1.05);
+            }
+            .role-btn:active {
+                transform: scale(0.98);
+            }
+            .footer {
+                position: absolute;
+                bottom: 15px;
+                font-size: 0.85em;
+                opacity: 0.8;
+            }
+            @media (min-width: 600px) {
+                .role-container {
+                    flex-direction: row;
+                    justify-content: center;
+                }
+                .role-btn {
+                    flex: 1;
+                    margin: 0 10px;
+                }
             }
         </style>
     </head>
     <body>
         <h1>🚌 Multi-Bus Live Tracker</h1>
-        <p>Select your role to continue:</p>
-        <button class="role-btn" onclick="window.location.href='/sender'">📍 GPS Sender</button>
-        <button class="role-btn" onclick="window.location.href='/tracker'">📊 Tracker Dashboard</button>
+        <p>Select your interface to begin:</p>
+
+        <div class="role-container">
+            <button class="role-btn" onclick="window.location.href='/sender'">
+                📍 GPS Sender Interface
+            </button>
+            <button class="role-btn" onclick="window.location.href='/tracker'">
+                📊 Tracker Dashboard
+            </button>
+        </div>
+
+        <div class="footer">
+            © 2025 Multi-Bus Tracker | Powered by Flask & Leaflet
+        </div>
     </body>
     </html>
     ''')
+
 
 # GPS Sender Page HTML
 GPS_SENDER = '''
