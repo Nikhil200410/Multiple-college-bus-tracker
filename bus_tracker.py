@@ -392,7 +392,6 @@ TRACKER_DASHBOARD = '''
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#667eea">
 <script>
-  <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/static/service-worker.js')
       .then(reg => console.log('✅ Service Worker registered:', reg))
