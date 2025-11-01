@@ -317,7 +317,8 @@ GPS_SENDER = '''
             const busName = document.getElementById('busName').value || 'Bus A';
             const route = document.getElementById('route').value;
             const name = document.getElementById('name').value || 'Student';
-            currentBusId = busName.replace(/\s+/g, '_');
+            currentBusId = busName.replace(" ", "_")
+
             
             if (!navigator.geolocation) {
                 alert('GPS not supported by your browser!');
@@ -968,7 +969,8 @@ def get_all_buses():
 @app.route('/api/bus_location/<bus_id>')
 def get_bus_location(bus_id):
     return jsonify(buses_data.get(bus_id, {}))
-    @app.route('/manifest.json')
+    
+@app.route('/manifest.json')
 def manifest():
     return send_from_directory('static', 'manifest.json')
 
