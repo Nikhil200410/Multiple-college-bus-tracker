@@ -383,6 +383,54 @@ TRACKER_DASHBOARD = '''
 </body>
 </html>
 '''
+@app.route('/role')
+def role_selector():
+    return '''
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>College Bus Tracker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="/manifest.json">
+        <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+        </script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                height: 100vh;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                color: white;
+            }
+            h1 { margin-bottom: 20px; }
+            button {
+                background: white;
+                color: #667eea;
+                font-weight: bold;
+                padding: 15px 30px;
+                margin: 10px;
+                border: none;
+                border-radius: 12px;
+                font-size: 1.1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🚌 College Bus Tracker</h1>
+        <p>Select your role</p>
+        <button onclick="location.href='/'">🎯 Tracker (Student)</button>
+        <button onclick="location.href='/sender'">📡 GPS Sender (Driver)</button>
+    </body>
+    </html>
+    '''
+
 
 @app.route('/')
 def home():
